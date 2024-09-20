@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "2efc2247-063a-4ea9-a4da-b1386520d712",
+		"name": "MaternityHospital",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36670729"
+	},
+	"item": [
+		{
+			"name": "Получение списка записей о детях",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/api/patients?BirthDate=le2023-12-30",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"api",
+						"patients"
+					],
+					"query": [
+						{
+							"key": "BirthDate",
+							"value": "le2023-12-30",
+							"description": "Фильтрация по дате рождения"
+						},
+						{
+							"key": "Gender",
+							"value": "male",
+							"description": "Фильтрация по полу",
+							"disabled": true
+						},
+						{
+							"key": "Active",
+							"value": "true",
+							"description": "Фильтрация по активности",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение записи о ребёнке по идентификатору",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{API_URL}}/api/patients/b2b974e6-f9d7-4b60-8317-83db88d2dfe3"
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление записи о ребёнке",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"Name\":\r\n        {\r\n            \"Id\":\"9ca7c58a-2781-499d-b4b8-23369d4d32ec\",\r\n            \"Use\":\"official\",\r\n            \"Family\":\"Иванов\",\r\n            \"Given\":[\"Иван\",\"Иванович\"]\r\n        },\r\n    \"Gender\":\"Male\",\r\n    \"BirthDate\":\"2024-04-05T00:35:50.2060701+03:00\",\r\n    \"Active\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{API_URL}}/api/patients"
+			},
+			"response": []
+		},
+		{
+			"name": "Обновление записи о ребёнке",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"Name\":\r\n        {\r\n            \"Id\":\"33f30cb3-4ee9-4523-ba3d-7b599073594f\",\r\n            \"Use\":\"official2\",\r\n            \"Family\":\"Иванов2\",\r\n            \"Given\":[\"Иван2\",\"Иванович2\"]\r\n        },\r\n    \"Gender\":\"Male\",\r\n    \"BirthDate\":\"2024-04-05T00:35:50.2060701+03:00\",\r\n    \"Active\":false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{API_URL}}/api/patients/33f30cb3-4ee9-4523-ba3d-7b599073594f"
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление записи о ребёнке",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{API_URL}}/api/patients/33f30cb3-4ee9-4523-ba3d-7b599073594f"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
